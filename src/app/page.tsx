@@ -110,7 +110,11 @@ export default function Home() {
           {servicos.map((serv) => (
             <div
               key={serv.id}
-              ref={(el) => animateRefs.current.push(el)}
+              ref={(el) => {
+                if (el && !animateRefs.current.includes(el)) {
+                  animateRefs.current.push(el);
+                }
+              }}
               className="service-card bg-white p-12 border border-gray-200 relative overflow-hidden group hover:-translate-y-3 hover:shadow-2xl transition-all duration-500"
             >
               <div className="absolute top-0 left-0 w-0 h-full bg-primary-pink group-hover:w-full transition-all duration-500"></div>
@@ -132,7 +136,7 @@ export default function Home() {
       {/* Galeria */}
       <section id="galeria" className="py-20 lg:py-32 bg-gray-50 px-5 lg:px-12">
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-playfair text-5xl mb-5 text-center font-bold">Portfolio</h2>
+          <h2 className="font-playfair text-5xl mb-5 text-center font-bold">Blog</h2>
           <p className="text-center text-gray-600 max-w-2xl mx-auto mb-20">
             Uma seleção dos nossos trabalhos...
           </p>
@@ -141,8 +145,12 @@ export default function Home() {
             {Array.from({ length: 6 }).map((_, i) => (
               <div
                 key={i}
-                ref={(el) => animateRefs.current.push(el)}
-                className="gallery-item aspect-square bg-gradient-to-br from-primary-pink to-secondary-pink relative group cursor-pointer"
+                ref={(el) => {
+                  if (el && !animateRefs.current.includes(el)) {
+                    animateRefs.current.push(el);
+                  }
+                }}
+                className="gallery-item aspect-square bg-linear-to-br from-primary-pink to-secondary-pink relative group cursor-pointer"
               >
                 <div className="absolute inset-0 bg-dark opacity-0 group-hover:opacity-70 transition-all"></div>
               </div>
