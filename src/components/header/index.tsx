@@ -1,16 +1,24 @@
+import Image from "next/image";
+
 export default function Header() {
   return (
     <nav className="fixed w-full top-0 z-50 transition-all duration-300 px-8 lg:px-12 py-5 bg-linear-65 from-pink-400 to-gray-950">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        {/* Logo */}
-        <div className="text-2xl font-bold text-white tracking-wider">
-          🌹 Rosa de Saron
+      <div className="max-w-7xl md:mx-2 flex justify-between items-center">
+        <div className="dark:invert text-2xl font-bold text-white tracking-wider flex items-center">
+        <Image
+          src="/next.svg"
+          alt="Next.js logo"
+          width={50}
+          height={10}
+          priority
+        />
+          Rosa de Saron
         </div>
 
         {/* Navigation */}
         <ul className="hidden md:flex gap-10">
           <li>
-            <a 
+            <a
               href="#home"
               className="text-white font-medium text-sm tracking-wider hover:text-pink-400 transition-colors relative group pb-5"
             >
@@ -19,7 +27,7 @@ export default function Header() {
             </a>
           </li>
           <li>
-            <a 
+            <a
               href="#sobre"
               className="text-white font-medium text-sm tracking-wider hover:text-pink-400 transition-colors relative group pb-5"
             >
@@ -28,7 +36,7 @@ export default function Header() {
             </a>
           </li>
           <li>
-            <a 
+            <a
               href="#contato"
               className="text-white font-medium text-sm tracking-wider hover:text-pink-400 transition-colors relative group pb-5"
             >
