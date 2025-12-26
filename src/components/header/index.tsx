@@ -7,9 +7,8 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full top-0 z-50 transition-all duration-300 px-8 lg:px-12 py-5 bg-gradient-to-r from-pink-400 to-gray-950">
+    <nav className="fixed w-full top-0 z-50 transition-all duration-300 px-8 lg:px-12 py-5 bg-linear-to-r from-pink-400 to-gray-950">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        {/* Logo */}
         <div className="dark:invert text-2xl font-bold text-white tracking-wider flex items-center gap-3">
           <Image
             src="/next.svg"
@@ -25,19 +24,19 @@ export default function Header() {
         <ul className="hidden md:flex gap-10">
           <li>
             <a
-              href="#home"
+              href="#blog"
               className="text-white font-medium text-sm tracking-wider hover:text-pink-400 transition-colors relative group pb-5"
             >
-              Home
+              Blog
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
           </li>
           <li>
             <a
-              href="#sobre"
+              href="#servicos"
               className="text-white font-medium text-sm tracking-wider hover:text-pink-400 transition-colors relative group pb-5"
             >
-              Sobre
+              Servicos
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
           </li>

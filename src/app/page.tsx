@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from 'react';
 
 export default function Home() {
@@ -8,10 +9,7 @@ export default function Home() {
 
   const [form, setForm] = useState({
     nome: '',
-    tel: '',
-    email: '',
     servico: '',
-    msg: '',
   });
 
   const servicos = [
@@ -26,7 +24,7 @@ export default function Home() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     alert('Obrigado! Em breve entraremos em contato.');
-    setForm({ nome: '', tel: '', email: '', servico: '', msg: '' });
+    setForm({ nome: '', servico: '' });
   };
 
   useEffect(() => {
@@ -70,30 +68,27 @@ export default function Home() {
 
   return (
     <>
-      {/* Navbar (adicione se quiser, não estava no código original completo, mas referenciado) */}
-      {/* <nav ref={navbarRef} className="fixed top-0 w-full z-50 transition-all duration-300">...</nav> */}
-
-      {/* Hero */}
-      <section className="h-screen relative flex items-center justify-center bg-gradient-to-br from-dark via-dark-gray to-primary-pink overflow-hidden">
-        <div
-          className="absolute w-full h-full opacity-10 animate-float"
-          style={{
-            background: 'radial-gradient(circle, rgba(233,30,99,0.3) 1px, transparent 1px)',
-            backgroundSize: '50px 50px',
-          }}
-        ></div>
-
+      <section className="h-screen relative flex items-center justify-center bg-linear-to-br from-pink-300 via-pink-400 to-pink-300 overflow-hidden">
         <div className="text-center z-10 px-5">
-          <h1 className="font-playfair text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-5">
-            🌹Rosa<br />de Saron
-          </h1>
-          <p className="text-xl md:text-2xl text-secondary-pink font-light tracking-widest uppercase mb-10">
+          <div className="dark:invert text-2xl font-bold text-white tracking-wider">
+            <h1 className="flex text-5xl md:text-7xl lg:text-8xl font-bold  mb-5">
+              <Image
+                src="/next.svg"
+                alt="Next.js logo"
+                width={150}
+                height={1}
+                priority
+              /> Rosa
+            </h1>
+            <h1 className="font-playfair text-5xl md:text-7xl lg:text-8xl font-bold mb-5">
+              de Saron
+            </h1>
+          </div>
+          <p className="dark:invert text-white text-xl md:text-2xl tracking-widest mb-10">
             Manicure & Pedicure de Luxo
           </p>
-          <a
-            href="#contato"
-            className="inline-block px-12 py-4 bg-primary-pink text-white font-semibold border-2 border-primary-pink hover:bg-white hover:text-primary-pink transition-all duration-300"
-          >
+          <a href="#contato"
+            className="inline-block px-12 py-4 font-semibold border-2 border-pink-400 hover:bg-black transition-all duration-600">
             AGENDAR HORÁRIO
           </a>
         </div>
@@ -108,23 +103,22 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-16">
           {servicos.map((serv) => (
-            <div
-              key={serv.id}
+            <div key={serv.id}
               ref={(el) => {
                 if (el && !animateRefs.current.includes(el)) {
                   animateRefs.current.push(el);
                 }
               }}
-              className="service-card bg-white p-12 border border-gray-200 relative overflow-hidden group hover:-translate-y-3 hover:shadow-2xl transition-all duration-500"
+              className="service-card bg-pink-400 p-12 border border-gray-200 relative overflow-hidden group hover:-translate-y-3 hover:shadow-2xl transition-all duration-500"
             >
-              <div className="absolute top-0 left-0 w-0 h-full bg-primary-pink group-hover:w-full transition-all duration-500"></div>
+              <div className="absolute top-0 left-0 w-0 h-full bg-pink-400 group-hover:w-full transition-all duration-500"></div>
               <div className="relative z-10">
-                <div className="font-playfair text-5xl text-primary-pink mb-5 group-hover:text-white">
+                <div className="font-playfair text-5xl text-pink-400mb-5 group-hover:text-white">
                   {serv.id}
                 </div>
                 <h3 className="font-playfair text-2xl mb-4 group-hover:text-white">{serv.title}</h3>
                 <p className="text-gray-600 mb-6 group-hover:text-white">{serv.desc}</p>
-                <div className="text-2xl font-semibold text-primary-pink group-hover:text-white">
+                <div className="text-2xl font-semibold text-pink-400group-hover:text-white">
                   {serv.price}
                 </div>
               </div>
@@ -133,10 +127,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Galeria */}
-      <section id="galeria" className="py-20 lg:py-32 bg-gray-50 px-5 lg:px-12">
+      <section id="blog" className="py-20 lg:py-32 bg-gray-50 px-5 lg:px-12">
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-playfair text-5xl mb-5 text-center font-bold">Blog</h2>
+          <h2 className="dark:invert font-playfair text-5xl mb-5 text-center font-bold">Blog</h2>
           <p className="text-center text-gray-600 max-w-2xl mx-auto mb-20">
             Uma seleção dos nossos trabalhos...
           </p>
@@ -150,7 +143,7 @@ export default function Home() {
                     animateRefs.current.push(el);
                   }
                 }}
-                className="gallery-item aspect-square bg-linear-to-br from-primary-pink to-secondary-pink relative group cursor-pointer"
+                className="gallery-item aspect-square bg-linear-to-br from-pink-400 to-pink-600 relative group cursor-pointer"
               >
                 <div className="absolute inset-0 bg-dark opacity-0 group-hover:opacity-70 transition-all"></div>
               </div>
@@ -159,61 +152,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contato */}
-      <section id="contato" className="py-20 lg:py-32 bg-dark text-white px-5 lg:px-12">
+      <section id="contato" className="py-20 lg:py-32 bg-dark px-5 lg:px-12">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
           <div>
             <h2 className="font-playfair text-5xl mb-5 font-bold">Agende sua Experiência</h2>
             <p className="text-gray-400 mb-10">Entre em contato...</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-dark-gray p-10">
-            <input
-              value={form.nome}
-              onChange={(e) => setForm({ ...form, nome: e.target.value })}
-              placeholder="Nome"
-              required
-              className="input"
-            />
-            <input
-              value={form.tel}
-              onChange={(e) => setForm({ ...form, tel: e.target.value })}
-              placeholder="Telefone"
-              required
-              className="input"
-            />
-            <input
-              value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
-              placeholder="Email"
-              required
-              className="input"
-            />
-            <select
-              value={form.servico}
-              onChange={(e) => setForm({ ...form, servico: e.target.value })}
-              required
-              className="input"
-            >
-              <option value="">Selecione</option>
-              {servicos.map((s) => (
-                <option key={s.id} value={s.title}>
-                  {s.title}
-                </option>
-              ))}
-            </select>
-            <textarea
-              value={form.msg}
-              onChange={(e) => setForm({ ...form, msg: e.target.value })}
-              placeholder="Mensagem"
-              className="input h-32"
-            />
-
+          <form onSubmit={handleSubmit} className="bg-pink-500 p-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-1 my-10">
+              <input
+                value={form.nome}
+                onChange={(e) => setForm({ ...form, nome: e.target.value })}
+                placeholder="Nome"
+                required
+                className="input m-3 p-2 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:shadow-[0_0_15px_rgba(219,39,119,0.6)] transition-all duration-300"
+              />
+              <select
+                value={form.servico}
+                onChange={(e) => setForm({ ...form, servico: e.target.value })}
+                className="input m-3 bg-pink-500 p-2 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:shadow-[0_0_15px_rgba(219,39,119,0.6)] transition-all duration-300"
+              >
+                <option value="">Serviços</option>
+                {servicos.map((s) => (
+                  <option key={s.id} value={s.title}>
+                    {s.title}
+                  </option>
+                ))}
+              </select>
+            </div>
             <button
               type="submit"
-              className="w-full bg-primary-pink py-4 uppercase font-bold hover:bg-white hover:text-primary-pink transition"
-            >
-              Enviar Solicitação
+              className="w-full bg-pink-600 py-4 uppercase font-bold hover:bg-white hover:text-pink-400 transition focus:outline-none focus:ring-2 focus:ring-pink-900 focus:shadow-[0_0_15px_rgba(219,39,119,0.6)]">
+              Enviar Mensagem
             </button>
           </form>
         </div>
@@ -221,7 +192,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-black text-white text-center py-12">
-        <p className="text-gray-500 text-sm">&copy; 2025 Glamour Studio</p>
+        <p className="text-gray-500 text-sm">Rosa de Saron &copy; 2025</p>
       </footer>
 
       <style jsx>{`
@@ -237,7 +208,7 @@ export default function Home() {
           animation: float 20s linear infinite;
         }
         .input {
-          @apply w-full mb-5 p-4 bg-dark-gray border border-primary-pink text-white;
+          @apply w-full mb-5 p-4 border border-pink-400 text-white;
         }
       `}</style>
     </>
