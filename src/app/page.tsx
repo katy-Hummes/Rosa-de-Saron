@@ -127,7 +127,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="blog" className="py-20 lg:py-32 bg-gray-50 px-5 lg:px-12">
+      <section id="blog" className="py-20 lg:py-32 bg-pink-200 px-5 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <h2 className="dark:invert font-playfair text-5xl mb-5 text-center font-bold">Blog</h2>
           <p className="text-center text-gray-600 max-w-2xl mx-auto mb-20">
